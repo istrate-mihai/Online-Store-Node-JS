@@ -34,6 +34,7 @@ exports.getProduct = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
   Cart.getCart(cart => {
+
     Product.fetchAll(products => {
       let cartToDisplay = [];
 
@@ -50,6 +51,7 @@ exports.getCart = (req, res, next) => {
         pageTitle: 'Checkout',
         path: '/cart',
         cartToDisplay: cartToDisplay,
+        totalPrice: cart.totalPrice,
       });
     });
   });

@@ -197,6 +197,11 @@ form {
   text-align: center;
 }
 
+.left {
+  float: left;
+  padding-left: 10px;
+}
+
 @media (min-width: 768px) {
   .main-header__nav {
     display: flex;
