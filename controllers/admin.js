@@ -1,3 +1,4 @@
+const { create } = require('express-handlebars');
 const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
@@ -14,8 +15,16 @@ exports.postAddProduct = (req, res, next) => {
   const description = req.body.description;
   const price       = req.body.price;
 
-  const product = new Product(null, title, imageUrl, description, price);
-  product.save().then(() => res.redirect('/')).catch(err => console.error(err));
+  Product.create({
+    title: title,
+    imageUrl: imageUrl,
+    description: description,
+    price: price,
+  }).then(result => {
+    console.log(result);
+  }).catch(err => {
+    console.error(err);
+  });
 };
 
 exports.getEditProduct = (req, res, next) => {
